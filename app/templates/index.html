@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <style>
+        table, td, th{
+            border:1px solid rgb(129, 29, 195);
+            line-height: 150%;
+        }
+    </style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        {%if message%}
+        <h2>{{message}}</h2>
+        {%endif%}
+        <form method="post">
+            <button type="submit" name="Scrap">Scrap</button>
+            <button type="submit" name="Sort by Price Ascending">Sort by Price Ascending</button>
+            <button type="submit" name="Sort by Price Descending">Sort by Price Descending</button>
+            <button type="submit"name="Sort by Rating">Sort by Rating</button>
+            <button type="submit"name="Refreshed">Show All</button>
+        </form>
+        <h4>{{"Enter range for Price (Min-Max)"}}</h4>
+        <form method="post" name="input">
+            <input type="text" name="MinPrice" size="10">
+            <input type="text" name="MaxPrice" size="10">
+            <button type="submit" name="PriceFilter">filter</button>
+        </form>
+        <h4>{{"Enter range for Rating (Min-Max)"}}</h4>
+        <form method="post" name="input">
+            <input type="text" name="MinRating" size="10">
+            <input type="text" name="MaxRating" size="10">
+            <button type="submit" name="RatingFilter">filter</button>
+        </form>
+        
+        <h3>Search</h3>
+        <form method="post" name="input">
+            <input type="text" name="SearchQuery" size="100">
+            <button type="submit" name="Search">send</button>
+        </form>
+
+        <table style="width:100%"> 
+            <tr>
+                <td>{{'Title'}}</td>
+                <td>{{'Price'}}</td>
+                <td>{{'Rating'}}</td>
+                <td>{{'SiteName'}}</td>
+                <td>{{'Url'}}</td>
+            </tr>
+            <tr>
+
+            {% for item in data %}
+
+                <td>{{item['Title']}}</td>
+                <td>{{item['Price']}}</td>
+                <td>{{item['Rating']}}</td>
+                <td>{{item['SiteName']}}</td>
+                <td>
+                    <a href="{{item['Url']}}">
+                        <div style="height:100%;width:100%">
+                            click
+                        </div>
+                    </a>
+                </td>
+                <td>
+                    <form action="http://127.0.0.1:5000/{{item['Title']}}" method="post">
+                        <button type="submit"name="{{item['Title']}}">More Info</button>
+                    </form>
+                </td>
+                <tr class="blank_row">
+                    <td bgcolor="#AAAAA" colspan="10">&nbsp;</td>
+                </tr>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+
+</html>

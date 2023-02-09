@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <style>
+        td {
+            line-height: 125%;
+        }
+    </style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <table> 
+            <tr>
+                <td>{{'Title'}}</td>
+                <td>{{'Price'}}</td>
+                <td>{{'Rating'}}</td>
+                <td>{{'Ram'}}</td>
+                <td>{{'ScreenSize'}}</td>
+                <td>{{'SiteName'}}</td>
+                <td>{{'Url'}}</td>
+            </tr>
+
+            <tr>
+                <tr class="blank_row">
+                    <td bgcolor="#ABCDE" colspan="10">&nbsp;</td>
+                </tr>
+                <td>{{item['Title']}}</td>
+                <td>{{item['Price']}}</td>
+                <td>{{item['Rating']}}</td>
+                <td>{{item['Ram']}}</td>
+                <td>{{item['ScreenSize']}}</td>
+                <td>{{item['SiteName']}}</td>
+                <td>
+                    <a href="{{item['Url']}}">
+                        <div style="height:100%;width:100%">
+                            click
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        {%if table_data%}
+            {{table_data[0]|safe}}
+        {%endif%}
+    </body>
+
+</html>

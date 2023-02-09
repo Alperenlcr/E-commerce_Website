@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <h2>Add</h2>
+        <h4>{{"Enter in order : Title, Price, Rating, Ram, ScreenSize, SiteName, Url"}}</h4>
+        <form action="{{url_for('admin')}}" method="post" name="input">
+            <input type="text" name="Title" size="60">
+            <input type="text" name="Price" size="15">
+            <input type="text" name="Rating" size="15">
+            <input type="text" name="Ram" size="15">
+            <input type="text" name="ScreenSize" size="15">
+            <input type="text" name="SiteName" size="20">
+            <input type="text" name="Url" size="60">
+            <button type="submit" name="Add">send</button>
+        </form>
+        <h2>Remove</h2>
+        <h4>{{"Title"}}</h4>
+        <form action="{{url_for('admin')}}" method="post" name="input">
+            <input type="text" name="Title" size="60">
+            <button type="submit" name="Remove">send</button>
+        </form>
+        <h2>Update</h2>
+        <h4>{{"First:Title || Second:Title/Price/Rating/Ram/ScreenSize/SiteName/Url || Third:New Value"}}</h4>
+        <form action="{{url_for('admin')}}" method="post" name="input">
+            <input type="text" name="Title" size="100">
+            <input type="text" name="key" size="100">
+            <input type="text" name="value" size="80">
+            <button type="submit" name="Update">send</button>
+        </form>
+    </body>
+
+</html>
